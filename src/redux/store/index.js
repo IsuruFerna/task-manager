@@ -1,18 +1,24 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-// import trackReducer from "../reducers/track";
-// import likeReducer from "../reducers/liked";
-// import searchReducer from "../reducers/searchResults";
-// import searchTitleReducer from "../reducers/searchTitle";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import thunk from "redux-thunk";
+import taskReducer from "../reducers";
 
-const bigReducer = combineReducers({
-   //  track: trackReducer,
-   //  liked: likeReducer,
-   //  searchedResult: searchReducer,
-   //  searchedTitle: searchTitleReducer,
+const persistConfig = {
+   key: "root",
+   storage,
+};
+
+const rootReducer = combineReducers({
+   task: taskReducer,
 });
 
-const store = configureStore({
-   reducer: bigReducer,
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+   reducer: persistedReducer,
+   // devTools: process.env.NODE_ENV !== 'production',
+   // middleware: [thunk],
 });
 
-export default store;
+export const persistor = persistStore(store);

@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
+import { addTaskAction } from "../redux/actions";
 
 const AddTask = (props) => {
+   const dispatch = useDispatch();
    const [task, setTask] = useState({
       id: 1,
       task: "",
@@ -21,7 +24,10 @@ const AddTask = (props) => {
    const handleSubmit = (e) => {
       e.preventDefault();
       console.log(task);
+      dispatch(addTaskAction(task));
       props.setModalShowAddTask(false);
+
+      // resets the values of the input
       setTask({
          id: 1,
          task: "",
