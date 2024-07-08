@@ -25,7 +25,8 @@ const AddTask = (props) => {
       e.preventDefault();
       console.log(task);
       dispatch(addTaskAction(task));
-      props.setModalShowAddTask(false);
+      props.onHide();
+      // props.setModalShowAddTask(false);
 
       // resets the values of the input
       setTask({

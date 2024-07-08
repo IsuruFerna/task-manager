@@ -1,15 +1,22 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { taskMarkAsDoneAction } from "../redux/actions";
+import { selectTaskAction, taskMarkAsDoneAction } from "../redux/actions";
 
 const SingleTask = ({ task, done, setModalShow, index }) => {
    const dispatch = useDispatch();
+
+   // marks task as done or not
    const setTaskState = (event, index) => {
-      console.log("state changed");
       if (event.target.checked || !event.target.checked) {
          dispatch(taskMarkAsDoneAction(index));
       }
+   };
+
+   // stores selected task into redux store
+   const setModalMessage = (index) => {
+      dispatch(selectTaskAction(index));
+      setModalShow(true);
    };
 
    return (
@@ -34,7 +41,7 @@ const SingleTask = ({ task, done, setModalShow, index }) => {
                </div>
             </div>
             <button
-               onClick={() => setModalShow(true)}
+               onClick={() => setModalMessage(index)}
                type="button"
                className="btn-close"
                aria-label="Close"
