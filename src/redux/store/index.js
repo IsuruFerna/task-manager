@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
-import thunk from "redux-thunk";
 import taskReducer from "../reducers";
 
 const persistConfig = {
@@ -10,7 +9,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-   task: taskReducer,
+   tasks: taskReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -22,7 +21,6 @@ export const store = configureStore({
          serializableCheck: false,
       }),
    // devTools: process.env.NODE_ENV !== 'production',
-   // middleware: [thunk],
 });
 
 export const persistor = persistStore(store);

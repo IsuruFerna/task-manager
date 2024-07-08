@@ -15,24 +15,9 @@ const HomePage = () => {
    const [modalShow, setModalShow] = useState(false);
    const [modalShowAddTask, setModalShowAddTask] = useState(false);
 
-   const tasks = useSelector((state) => state.task);
+   const tasks = useSelector((state) => state.tasks.taskList);
 
-   console.log(tasks);
-
-   // const tasks = [
-   //    {
-   //       id: 1,
-   //       task: "this is the task description",
-   //       piority: 1,
-   //       done: false,
-   //    },
-   //    {
-   //       id: 2,
-   //       task: "this is the task description 2",
-   //       piority: 2,
-   //       done: true,
-   //    },
-   // ];
+   console.log("this is taks ", tasks);
 
    return (
       <>
@@ -66,6 +51,7 @@ const HomePage = () => {
                               task={elem.task}
                               done={elem.done}
                               setModalShow={setModalShow}
+                              index={i}
                            />
                         ))}
                      </ListGroup>
