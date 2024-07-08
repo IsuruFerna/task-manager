@@ -9,25 +9,30 @@ import DeleteTask from "../componets/DeleteTask";
 import Button from "react-bootstrap/Button";
 import AddTask from "../componets/AddTask";
 import { PlusLg } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
    const [modalShow, setModalShow] = useState(false);
    const [modalShowAddTask, setModalShowAddTask] = useState(false);
 
-   const tasks = [
-      {
-         id: 1,
-         task: "this is the task description",
-         piority: 1,
-         done: false,
-      },
-      {
-         id: 2,
-         task: "this is the task description 2",
-         piority: 2,
-         done: true,
-      },
-   ];
+   const tasks = useSelector((state) => state.task);
+
+   console.log(tasks);
+
+   // const tasks = [
+   //    {
+   //       id: 1,
+   //       task: "this is the task description",
+   //       piority: 1,
+   //       done: false,
+   //    },
+   //    {
+   //       id: 2,
+   //       task: "this is the task description 2",
+   //       piority: 2,
+   //       done: true,
+   //    },
+   // ];
 
    return (
       <>
