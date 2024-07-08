@@ -27,6 +27,7 @@ const SingleTask = ({ task, done, setModalShow, index }) => {
                   onChange={(event) => setTaskState(event, index)}
                   className="form-check-input me-3"
                   type="checkbox"
+                  defaultChecked={done}
                   id="checkboxNoLabel"
                   value=""
                   aria-label="..."

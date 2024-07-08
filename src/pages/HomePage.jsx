@@ -17,8 +17,6 @@ const HomePage = () => {
 
    const tasks = useSelector((state) => state.tasks.taskList);
 
-   console.log("this is taks ", tasks);
-
    return (
       <>
          <DeleteTask show={modalShow} onHide={() => setModalShow(false)} />
@@ -35,7 +33,7 @@ const HomePage = () => {
             </div>
          </Button>
          <AddTask
-            setModalShowAddTask={setModalShowAddTask}
+            // setModalShowAddTask={setModalShowAddTask}
             show={modalShowAddTask}
             onHide={() => setModalShowAddTask(false)}
          />

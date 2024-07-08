@@ -7,7 +7,6 @@ import { deleteTaskAction } from "../redux/actions";
 const DeleteTask = (props) => {
    const dispatch = useDispatch();
    const selectedTask = useSelector((state) => state.tasks.selected);
-   console.log("selected task ", selectedTask);
 
    const handleDeleteTask = () => {
       if (selectedTask !== null) {
